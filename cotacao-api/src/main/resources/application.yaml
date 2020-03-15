@@ -1,6 +1,18 @@
 server:
   port: 8081
 
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: '*'
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-details: always
+
 spring:
   application:
     name: corporativo
