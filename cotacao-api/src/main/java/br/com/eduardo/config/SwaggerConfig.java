@@ -1,15 +1,12 @@
 package br.com.eduardo.config;
 
-import org.springframework.boot.info.BuildProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMethod;
-import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.builders.ResponseMessageBuilder;
-import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.ResponseMessage;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
@@ -22,17 +19,11 @@ import java.util.List;
 @EnableSwagger2
 public class SwaggerConfig {
 
-    private final BuildProperties buildProperties;
-
-    public SwaggerConfig(BuildProperties buildProperties) {
-        this.buildProperties = buildProperties;
-    }
-
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.ant("/api/**")).paths(PathSelectors.any()).build().useDefaultResponseMessages(true)
-                .globalResponseMessage(RequestMethod.GET, responseMessageForGET()).apiInfo(apiInfo());
+                .globalResponseMessage(RequestMethod.GET, responseMessageForGET());
     }
 
     private List<ResponseMessage> responseMessageForGET() {
@@ -48,12 +39,6 @@ public class SwaggerConfig {
                 .message(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase()).build());
 
         return responses;
-    }
-
-    private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("REST API")
-                .description("Cotação do Dólar")
-                .version(buildProperties.getVersion()).license(null).licenseUrl(null).build();
     }
 
 }
