@@ -15,7 +15,7 @@ management:
 
 spring:
   application:
-    name: corporativo
+    name: cotacaoapi
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     url: jdbc:postgresql://localhost:5555/testdb
@@ -33,3 +33,9 @@ spring:
         temp:
           use_jdbc_metadata_defaults: false
         default_schema: public
+
+opentracing:
+  jaeger:
+    http-sender:
+      url: http://localhost:16686/api/traces
+
