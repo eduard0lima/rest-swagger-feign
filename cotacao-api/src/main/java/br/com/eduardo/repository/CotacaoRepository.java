@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CotacaoRepository extends JpaRepository<Cotacao, Long> {
 
+    Cotacao findByCotacaoCompra(String compra);
+
 }

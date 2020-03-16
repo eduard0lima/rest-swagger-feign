@@ -17,7 +17,7 @@
     <properties>
         <java.version>1.8</java.version>
         <projectlombok.version>1.18.2</projectlombok.version>
-        <swagger.verion>2.9.2</swagger.verion>
+        <swagger.version>2.9.2</swagger.version>
         <openfeign.version>10.7.0</openfeign.version>
     </properties>
 
@@ -41,6 +41,12 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+            <version>1.4.194</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
@@ -61,12 +67,12 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
-            <version>${swagger.verion}</version>
+            <version>${swagger.version}</version>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
-            <version>${swagger.verion}</version>
+            <version>${swagger.version}</version>
         </dependency>
         <dependency>
             <groupId>io.github.openfeign</groupId>
